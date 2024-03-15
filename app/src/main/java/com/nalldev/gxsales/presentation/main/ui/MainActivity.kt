@@ -10,6 +10,7 @@ import com.nalldev.gxsales.core.util.showErrorToast
 import com.nalldev.gxsales.core.util.showWarningToast
 import com.nalldev.gxsales.core.util.sweetAlertCancelable
 import com.nalldev.gxsales.databinding.ActivityMainBinding
+import com.nalldev.gxsales.presentation.add_edit_lead.ui.AddEditActivity
 import com.nalldev.gxsales.presentation.login.ui.LoginActivity
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -63,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun setupListeners() = with(binding){
         fabAdd.setOnClickListener {
-            showWarningToast("ADUH")
+            startActivityTo(AddEditActivity::class.java)
         }
     }
 }

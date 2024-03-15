@@ -25,4 +25,27 @@
     <string name="source">Source</string>
     <string name="search">Search</string>
     <string name="reset">Reset</string>
+    <string name="add_lead">Add Lead</string>
+    <string name="branch_office">Branch Office</string>
+    <string name="select_branch_office">Select Branch Office</string>
+    <string name="select_branch_office_hint">- Select Branch Office -</string>
+    <string name="personal_data">Personal Data</string>
+    <string name="full_name_mandatory">Full Name <font fgcolor='#FF0000'>*</font></string>
+    <string name="cell_phone_number_mandatory">Cell Phone Number <font fgcolor='#FF0000'>*</font></string>
+    <string name="_62">+62</string>
+    <string name="_879993xxxx">879993xxxx</string>
+    <string name="e_g_jl_kerobokan_388x">e.g Jl Kerobokan 388x</string>
+    <string name="latitude_mandatory">Latitude *</string>
+    <string name="e_g_8_44444">e.g -8.44444</string>
+    <string name="e_g_115_00003">e.g 115.00003</string>
+    <string name="address">Address</string>
+    <string name="choose_gender">Choose Gender ?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="select_location">Select Location</string>
+    <string name="identity_number">Identity Number</string>
+    <string name="e_g_1879920xxxxxx">e.g 1879920xxxxxx</string>
+    <string name="upload_identity_passport">Upload Identity / Passport</string>
+    <string name="add_a_photo">Add a photo</string>
+    <string name="next">Next</string>
 </resources>
