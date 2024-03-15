@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Mamat Alkatiri" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/yellow_brand"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="#LD0124101713" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_regular"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_number"
+        tools:text="Jl. Tukad Balian Gg. Nuri III No.9, Renon, Denpasar Selatan, Kota Denpasar, Bali 80227, Indonesia" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flex"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:flexWrap="wrap"
+        app:alignItems="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_fill_8"
+            android:backgroundTint="@color/blue"
+            android:paddingVertical="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:text="Junk"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_fill_8"
+            android:backgroundTint="@color/green"
+            android:paddingVertical="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:text="Cancel"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_fill_8"
+            android:backgroundTint="@color/red"
+            android:paddingVertical="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:text="Call"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_fill_8"
+            android:backgroundTint="@color/yellow_brand"
+            android:paddingVertical="@dimen/_2sdp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:text="Google Business"
+            android:fontFamily="@font/inter_regular"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:background="@color/outline_stroke"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/text_grey"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:text="02 January 2024" />
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:background="@color/outline_stroke"/>
+
+
+        <TextView
+            android:id="@+id/tv_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/text_grey"
+            tools:text="Globalxtreme" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_4sdp"
+        android:background="@drawable/line_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flex"
+        android:layout_marginTop="@dimen/_8sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

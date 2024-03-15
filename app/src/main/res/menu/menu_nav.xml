@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragmentScreen"
+        android:icon="@drawable/ic_home"
+        android:enabled="true"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/leadsFragmentScreen"
+        android:icon="@drawable/ic_leads"
+        android:enabled="true"
+        android:title="@string/leads"/>
+
+    <item
+        android:id="@+id/shopFragmentScreen"
+        android:icon="@drawable/ic_shop"
+        android:enabled="true"
+        android:title="@string/shop"/>
+
+    <item
+        android:id="@+id/placeholderScreen"
+        android:enabled="false"
+        android:title=""/>
+</menu>

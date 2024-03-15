@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow_brand">#FFF9C900</color>
+    <color name="yellow_btn">#F9C900</color>
+    <color name="blue">#0085FF</color>
+    <color name="green">#2DB986</color>
+    <color name="red">#B92D2D</color>
+    <color name="text_grey">#667085</color>
+    <color name="text_input_grey">#F8F8F8</color>
+    <color name="outline_stroke">#FFD0D5DD</color>
+    <color name="unselect_nav">#C2C5C7</color>
+</resources>
