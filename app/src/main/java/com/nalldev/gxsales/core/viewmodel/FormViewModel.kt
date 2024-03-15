@@ -1,4 +1,4 @@
-package com.nalldev.gxsales.presentation.main.dialog.filter_leads.viewmodel
+package com.nalldev.gxsales.core.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FilterLeadsViewModel @Inject constructor(
+class FormViewModel @Inject constructor(
     private val formRepository: FormRepository
 ) : ViewModel() {
     private val _listStatus : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
@@ -26,10 +26,22 @@ class FilterLeadsViewModel @Inject constructor(
     private val _listSource : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
     val listSource : LiveData<List<BaseItemModel>> = _listSource
 
+    private val _listBranch : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
+    val listBranch : LiveData<List<BaseItemModel>> = _listBranch
+
+    private val _listProbabilities : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
+    val listProbabilities : LiveData<List<BaseItemModel>> = _listProbabilities
+
+    private val _listTypes : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
+    val listTypes : LiveData<List<BaseItemModel>> = _listTypes
+
     fun fetchForm() = viewModelScope.launch {
         _listStatus.postValue(formRepository.getStatuses())
         _listChannel.postValue(formRepository.getChannels())
         _listMedia.postValue(formRepository.getMedias())
         _listSource.postValue(formRepository.getSources())
+        _listBranch.postValue(formRepository.getBranchOffices())
+        _listProbabilities.postValue(formRepository.getProbabilities())
+        _listTypes.postValue(formRepository.getTypes())
     }
 }

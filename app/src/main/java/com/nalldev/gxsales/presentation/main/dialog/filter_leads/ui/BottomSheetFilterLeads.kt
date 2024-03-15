@@ -1,7 +1,6 @@
 package com.nalldev.gxsales.presentation.main.dialog.filter_leads.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nalldev.gxsales.core.util.DateConverter
 import com.nalldev.gxsales.core.util.createDateRangeBuilder
 import com.nalldev.gxsales.databinding.BottomSheetFilterBinding
-import com.nalldev.gxsales.presentation.main.dialog.filter_leads.viewmodel.FilterLeadsViewModel
+import com.nalldev.gxsales.core.viewmodel.FormViewModel
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
 import kotlinx.coroutines.launch
 
@@ -22,7 +21,7 @@ class BottomSheetFilterLeads : BottomSheetDialogFragment() {
     private var _binding : BottomSheetFilterBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel by activityViewModels<FilterLeadsViewModel>()
+    private val viewModel by activityViewModels<FormViewModel>()
     private val homeViewModel by activityViewModels<HomeViewModel>()
 
     private val statusArrayAdapter by lazy {

@@ -12,15 +12,15 @@
         tools:layout="@layout/fragment_branch_office" >
         <action
             android:id="@+id/action_branchOfficeFragment_to_leadOfficeFragment"
-            app:destination="@id/leadOfficeFragment" />
+            app:destination="@id/leadOfficeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/leadOfficeFragment"
         android:name="com.nalldev.gxsales.presentation.add_edit_lead.fragment.LeadOfficeFragment"
         android:label="fragment_lead_office"
-        tools:layout="@layout/fragment_lead_office" >
-        <action
-            android:id="@+id/action_leadOfficeFragment_to_branchOfficeFragment"
-            app:destination="@id/branchOfficeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_lead_office" />
 </navigation>

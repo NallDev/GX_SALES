@@ -1,28 +1,43 @@
 package com.nalldev.gxsales.presentation.add_edit_lead.ui
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.fragment.NavHostFragment
-import com.nalldev.gxsales.R
+import androidx.activity.viewModels
 import com.nalldev.gxsales.core.base.BaseActivity
+import com.nalldev.gxsales.core.util.UiState
+import com.nalldev.gxsales.core.util.showErrorToast
+import com.nalldev.gxsales.core.util.showSuccessToast
+import com.nalldev.gxsales.core.viewmodel.FormViewModel
 import com.nalldev.gxsales.databinding.ActivityAddEditBinding
+import com.nalldev.gxsales.presentation.add_edit_lead.viewmodel.AddEditLeadViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddEditActivity : BaseActivity<ActivityAddEditBinding>() {
+
+    private val viewModel by viewModels<AddEditLeadViewModel>()
+    private val formViewModel by viewModels<FormViewModel>()
+
     override fun getViewBinding(): ActivityAddEditBinding {
         return ActivityAddEditBinding.inflate(layoutInflater)
     }
 
-    override fun setupObserver() {
+    override fun setupObserver() = with(viewModel) {
+        stateCreateLead.observe(this@AddEditActivity) { state ->
+            when(state) {
+                is UiState.Error -> {
+                    dismissLoading()
+                    showErrorToast(state.message)
+                }
+                is UiState.Loading -> showLoading()
+                is UiState.Success -> {
+                    dismissLoading()
+                    showSuccessToast("OK")
+                }
+            }
+        }
     }
 
     override fun setupUI() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
+        formViewModel.fetchForm()
     }
 
     override fun setupListeners() {

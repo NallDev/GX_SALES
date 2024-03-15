@@ -6,6 +6,8 @@ import com.nalldev.gxsales.core.repository.form.FormRepository
 import com.nalldev.gxsales.core.repository.form.FormRepositoryImpl
 import com.nalldev.gxsales.core.repository.session.SessionRepository
 import com.nalldev.gxsales.core.repository.session.SessionRepositoryImpl
+import com.nalldev.gxsales.presentation.add_edit_lead.data.AddEditLeadRepositoryImpl
+import com.nalldev.gxsales.presentation.add_edit_lead.domain.repository.AddEditLeadRepository
 import com.nalldev.gxsales.presentation.main.data.HomeRepositoryImpl
 import com.nalldev.gxsales.presentation.main.domain.repository.HomeRepository
 import com.nalldev.gxsales.presentation.login.data.LoginRepositoryImpl
@@ -40,4 +42,8 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideLeadsRepository(apiService: ApiService, sessionRepository: SessionRepository) : LeadsRepository = LeadsRepositoryImpl(apiService, sessionRepository)
+
+    @Provides
+    @Singleton
+    fun provideAddEditLeadRepository(apiService: ApiService, sessionRepository: SessionRepository) : AddEditLeadRepository = AddEditLeadRepositoryImpl(apiService, sessionRepository)
 }

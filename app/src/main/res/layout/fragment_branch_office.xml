@@ -313,7 +313,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/e_g_8_44444"
-                        android:inputType="number"
+                        android:inputType="numberDecimal|numberSigned"
                         android:paddingHorizontal="@dimen/_12sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/colorTextHint"
@@ -353,7 +353,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="@string/e_g_115_00003"
-                        android:inputType="number"
+                        android:inputType="numberDecimal|numberSigned"
                         android:paddingHorizontal="@dimen/_12sdp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/colorTextHint"
@@ -446,9 +446,11 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_64sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
+                    android:id="@+id/container_add_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -480,7 +482,8 @@
             
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_12sdp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_next"

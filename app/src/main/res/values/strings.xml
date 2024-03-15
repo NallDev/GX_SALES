@@ -48,4 +48,20 @@
     <string name="upload_identity_passport">Upload Identity / Passport</string>
     <string name="add_a_photo">Add a photo</string>
     <string name="next">Next</string>
+    <string name="lead_information">Lead Information</string>
+    <string name="lead_type_mandatory">Lead Type*</string>
+    <string name="select_lead_type">- Select Lead Type -</string>
+    <string name="lead_channel_mandatory">Lead Channel*</string>
+    <string name="select_lead_channel">- Select Lead Channel -</string>
+    <string name="lead_media">Lead Media*</string>
+    <string name="select_lead_media">- Select Lead Media -</string>
+    <string name="lead_source">Lead Source</string>
+    <string name="select_lead_source">- Select Lead Source -</string>
+    <string name="lead_status_mandatory">Lead Status*</string>
+    <string name="select_lead_status">- Select Lead Status -</string>
+    <string name="lead_probability_mandatory">Lead Probability*</string>
+    <string name="select_lead_probability">- Select Lead Probability -</string>
+    <string name="notes">Notes</string>
+    <string name="submit">Submit</string>
+    <string name="previous">Previous</string>
 </resources>
