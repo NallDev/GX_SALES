@@ -13,6 +13,7 @@ import com.nalldev.gxsales.databinding.ActivityMainBinding
 import com.nalldev.gxsales.presentation.add_edit_lead.ui.AddEditActivity
 import com.nalldev.gxsales.presentation.login.ui.LoginActivity
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
+import com.nalldev.gxsales.presentation.main.viewmodel.ShopViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import taimoor.sultani.sweetalert2.Sweetalert
 
@@ -20,6 +21,7 @@ import taimoor.sultani.sweetalert2.Sweetalert
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel by viewModels<HomeViewModel>()
+    private val shopViewModel by viewModels<ShopViewModel>()
 
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
@@ -81,6 +83,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 is UiState.Success -> {
                     dismissLoading()
                     getListLead()
+                }
+            }
+        }
+
+        stateLogout.observe(this@MainActivity) { state ->
+            when(state) {
+                is UiState.Error -> {
+                    dismissLoading()
+                    showErrorToast(state.message)
+                }
+                is UiState.Loading -> showLoading()
+                is UiState.Success -> {
+                    dismissLoading()
+                    clearSession()
+                    startActivityTo(LoginActivity::class.java)
+                    finish()
                 }
             }
         }

@@ -1,6 +1,5 @@
 package com.nalldev.gxsales.presentation.main.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -50,6 +49,10 @@ class HomeViewModel @Inject constructor(
     private val _stateListLead: MutableLiveData<UiState<List<LeadResponse>>> =
         MutableLiveData()
     val stateListLead: LiveData<UiState<List<LeadResponse>>> = _stateListLead
+
+    private val _stateLogout: MutableLiveData<UiState<Unit>> =
+        MutableLiveData()
+    val stateLogout: LiveData<UiState<Unit>> = _stateLogout
 
     private val _profile: MutableLiveData<ProfileResponse> = MutableLiveData()
     val profile: LiveData<ProfileResponse> = _profile
@@ -217,6 +220,20 @@ class HomeViewModel @Inject constructor(
             ?.let { listData ->
                 _stateListLead.postValue(UiState.Success(listData))
                 _listLead.value = listData
+            }
+    }
+
+    fun doLogout() = viewModelScope.launch(Dispatchers.IO) {
+        homeRepository.doLogout()
+            .onStart {
+                _stateLogout.postValue(UiState.Loading)
+            }
+            .catch { cause: Throwable ->
+                _stateLogout.postValue(UiState.Error(ErrorExtractor.errorMessage(cause)))
+            }
+            .firstOrNull()
+            ?.let {
+                _stateLogout.postValue(UiState.Success(Unit))
             }
     }
 

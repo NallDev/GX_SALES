@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_leads" />
     <fragment
         android:id="@+id/shopFragmentScreen"
-        android:name="com.nalldev.gxsales.presentation.main.fragment.shop.ShopFragment"
+        android:name="com.nalldev.gxsales.presentation.main.fragment.shop.ui.ShopFragment"
         android:label="fragment_shop"
         tools:layout="@layout/fragment_shop" />
 </navigation>

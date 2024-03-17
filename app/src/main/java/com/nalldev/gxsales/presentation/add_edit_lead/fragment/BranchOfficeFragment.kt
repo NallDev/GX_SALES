@@ -184,7 +184,7 @@ class BranchOfficeFragment : BaseFragment<FragmentBranchOfficeBinding>() {
                     branchOfficeId.value.contains(item.id.toString(), true)
                 }
                 branch?.let {
-                    tvBranch.setText(it.name)
+                    tvBranch.setText(it.name, false)
                 }
             }
         }

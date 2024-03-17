@@ -1,5 +1,6 @@
 package com.nalldev.gxsales.presentation.main.domain.repository
 
+import com.nalldev.gxsales.core.base.BaseApiResponse
 import com.nalldev.gxsales.core.base.BaseItemModel
 import com.nalldev.gxsales.presentation.main.domain.model.ProfileResponse
 import com.nalldev.gxsales.presentation.main.domain.model.StatusesItem
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface HomeRepository {
     suspend fun getLeadsDashboard(fromDate : String, toDate : String) : Flow<List<StatusesItem>>
     suspend fun getProfile() : Flow<ProfileResponse>
+    suspend fun doLogout() : Flow<BaseApiResponse<ProfileResponse>>
 
     suspend fun getBranchOffices() : Flow<List<BaseItemModel>>
     suspend fun getTypes() : Flow<List<BaseItemModel>>

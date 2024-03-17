@@ -1,9 +1,12 @@
 package com.nalldev.gxsales.presentation.main.data
 
 import android.util.Log
+import com.nalldev.gxsales.core.base.BaseApiResponse
 import com.nalldev.gxsales.core.remote.ApiService
 import com.nalldev.gxsales.core.repository.session.SessionRepository
+import com.nalldev.gxsales.presentation.main.domain.model.ProfileResponse
 import com.nalldev.gxsales.presentation.main.domain.repository.HomeRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -21,6 +24,12 @@ class HomeRepositoryImpl @Inject constructor(
         val token = sessionRepository.getToken()
         val request = apiService.getProfile(token)
         emit(request.data)
+    }
+
+    override suspend fun doLogout() = flow {
+        val token = sessionRepository.getToken()
+        val request = apiService.doLogout(token)
+        emit(request)
     }
 
     override suspend fun getBranchOffices() = flow {

@@ -61,8 +61,8 @@ class BottomSheetLead(private val dataLead : LeadResponse) : BottomSheetDialogFr
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 }

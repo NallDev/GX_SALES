@@ -26,6 +26,11 @@ interface ApiService {
         @Body loginRequest: LoginRequest
     ) : LoginResponse
 
+    @POST("logout")
+    suspend fun doLogout(
+        @Header("Authorization") token : String,
+    ) : BaseApiResponse<ProfileResponse>
+
     @GET("leads/dashboard")
     suspend fun getLeadsDashboard(
         @Header("Authorization") token : String,

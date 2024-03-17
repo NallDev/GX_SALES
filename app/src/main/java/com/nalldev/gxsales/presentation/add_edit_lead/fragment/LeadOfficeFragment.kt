@@ -177,42 +177,42 @@ class LeadOfficeFragment : BaseFragment<FragmentLeadOfficeBinding>() {
                 typeId.value.contains(item.id.toString(), true)
             }
             type?.let {
-                tvType.setText(it.name)
+                tvType.setText(it.name, false)
             }
 
             val channel = formViewModel.listChannel.value?.find { item ->
                 channelId.value.contains(item.id.toString(), true)
             }
             channel?.let {
-                tvChannel.setText(it.name)
+                tvChannel.setText(it.name, false)
             }
 
             val media = formViewModel.listMedia.value?.find { item ->
                 mediaId.value.contains(item.id.toString(), true)
             }
             media?.let {
-                tvMedia.setText(it.name)
+                tvMedia.setText(it.name, false)
             }
 
             val source = formViewModel.listSource.value?.find { item ->
                 sourceId.value.contains(item.id.toString(), true)
             }
             source?.let {
-                tvSource.setText(it.name)
+                tvSource.setText(it.name, false)
             }
 
             val status = formViewModel.listStatus.value?.find { item ->
                 statusId.value.contains(item.id.toString(), true)
             }
             status?.let {
-                tvStatus.setText(it.name)
+                tvStatus.setText(it.name, false)
             }
 
             val probability = formViewModel.listProbabilities.value?.find { item ->
                 probabilityId.value.contains(item.id.toString(), true)
             }
             probability?.let {
-                tvProbability.setText(it.name)
+                tvProbability.setText(it.name, false)
             }
 
             tvNotes.setText(generalNotes.value)

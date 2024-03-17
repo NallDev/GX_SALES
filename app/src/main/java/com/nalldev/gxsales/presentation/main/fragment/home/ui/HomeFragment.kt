@@ -15,6 +15,7 @@ import com.nalldev.gxsales.core.util.GridSpacingItemDecoration
 import com.nalldev.gxsales.core.util.UiState
 import com.nalldev.gxsales.core.util.createDateRangeBuilder
 import com.nalldev.gxsales.databinding.FragmentHomeBinding
+import com.nalldev.gxsales.presentation.main.dialog.profile.BottomSheetProfile
 import com.nalldev.gxsales.presentation.main.fragment.home.adapter.HomeAdapter
 import com.nalldev.gxsales.presentation.main.domain.model.ProfileResponse
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
@@ -59,6 +60,11 @@ class HomeFragment : Fragment() {
                 }
                 .build()
                 .show()
+        }
+
+        viewProfile.setOnClickListener {
+            BottomSheetProfile(tvName.text.toString(), tvEmail.text.toString())
+                .show(requireActivity().supportFragmentManager, "profile")
         }
     }
 
