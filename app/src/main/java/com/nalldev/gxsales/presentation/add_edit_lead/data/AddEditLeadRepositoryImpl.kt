@@ -54,4 +54,46 @@ class AddEditLeadRepositoryImpl @Inject constructor(
             image)
         emit(request.data)
     }
+
+    override suspend fun updateLead(id : String, leadModel: LeadModel, image : MultipartBody.Part?) = flow {
+        val token = sessionRepository.getToken()
+        val branchOfficeIdBody = leadModel.branchOfficeId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val probabilityId = leadModel.probabilityId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val typeId = leadModel.typeId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val channelId = leadModel.channelId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val mediaId = leadModel.mediaId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val sourceId = leadModel.sourceId.toRequestBody("text/plain".toMediaTypeOrNull())
+        val fullName = leadModel.fullName.toRequestBody("text/plain".toMediaTypeOrNull())
+        val email = leadModel.email.toRequestBody("text/plain".toMediaTypeOrNull())
+        val phone = leadModel.phone.toRequestBody("text/plain".toMediaTypeOrNull())
+        val address = leadModel.address.toRequestBody("text/plain".toMediaTypeOrNull())
+        val latitude = leadModel.latitude.toRequestBody("text/plain".toMediaTypeOrNull())
+        val longitude = leadModel.longitude.toRequestBody("text/plain".toMediaTypeOrNull())
+        val companyName = leadModel.companyName.toRequestBody("text/plain".toMediaTypeOrNull())
+        val generalNotes = leadModel.generalNotes.toRequestBody("text/plain".toMediaTypeOrNull())
+        val gender = leadModel.gender.toRequestBody("text/plain".toMediaTypeOrNull())
+        val idNumber = leadModel.idNumber.toRequestBody("text/plain".toMediaTypeOrNull())
+
+        val request = apiService.updateLead(
+            token,
+            id,
+            branchOfficeIdBody,
+            probabilityId,
+            typeId,
+            channelId,
+            mediaId,
+            sourceId,
+            fullName,
+            email,
+            phone,
+            address,
+            latitude,
+            longitude,
+            companyName,
+            generalNotes,
+            gender,
+            idNumber,
+            image)
+        emit(request.data)
+    }
 }

@@ -1,7 +1,10 @@
 package com.nalldev.gxsales.presentation.main.domain.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class LeadResponse(
 
 	@field:SerializedName("address")
@@ -15,9 +18,6 @@ data class LeadResponse(
 
 	@field:SerializedName("latitude")
 	val latitude: String,
-
-	@field:SerializedName("companyName")
-	val companyName: String,
 
 	@field:SerializedName("channel")
 	val channel: Channel,
@@ -66,8 +66,9 @@ data class LeadResponse(
 
 	@field:SerializedName("status")
 	val status: Status
-)
+) : Parcelable
 
+@Parcelize
 data class Media(
 
 	@field:SerializedName("name")
@@ -75,8 +76,9 @@ data class Media(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class Status(
 
 	@field:SerializedName("name")
@@ -84,8 +86,9 @@ data class Status(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class Probability(
 
 	@field:SerializedName("name")
@@ -93,8 +96,9 @@ data class Probability(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class BranchOffice(
 
 	@field:SerializedName("name")
@@ -102,8 +106,9 @@ data class BranchOffice(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class Source(
 
 	@field:SerializedName("name")
@@ -111,8 +116,9 @@ data class Source(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class Channel(
 
 	@field:SerializedName("name")
@@ -120,8 +126,9 @@ data class Channel(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable
 
+@Parcelize
 data class Type(
 
 	@field:SerializedName("name")
@@ -129,4 +136,4 @@ data class Type(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) : Parcelable

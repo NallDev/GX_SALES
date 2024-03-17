@@ -106,4 +106,28 @@ interface ApiService {
         @Part("IDNumber") idNumber: RequestBody,
         @Part image: MultipartBody.Part?
     ): BaseApiResponse<LeadResponse>
+
+    @Multipart
+    @POST("leads/{id}/update")
+    suspend fun updateLead(
+        @Header("Authorization") token : String,
+        @Path("id") id: String,
+        @Part("branchOfficeId") branchOfficeId: RequestBody,
+        @Part("probabilityId") probabilityId: RequestBody,
+        @Part("typeId") typeId: RequestBody,
+        @Part("channelId") channelId: RequestBody,
+        @Part("mediaId") mediaId: RequestBody,
+        @Part("sourceId") sourceId: RequestBody,
+        @Part("fullName") fullName: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part("latitude") latitude: RequestBody,
+        @Part("longitude") longitude: RequestBody,
+        @Part("companyName") companyName: RequestBody,
+        @Part("generalNotes") generalNotes: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("IDNumber") idNumber: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): BaseApiResponse<LeadResponse>
 }

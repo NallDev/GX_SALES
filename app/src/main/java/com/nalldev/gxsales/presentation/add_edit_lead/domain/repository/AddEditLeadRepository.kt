@@ -7,4 +7,5 @@ import okhttp3.MultipartBody
 
 interface AddEditLeadRepository {
     suspend fun createLead(leadModel: LeadModel, image : MultipartBody.Part?) : Flow<LeadResponse>
+    suspend fun updateLead(id: String, leadModel: LeadModel, image : MultipartBody.Part?) : Flow<LeadResponse>
 }

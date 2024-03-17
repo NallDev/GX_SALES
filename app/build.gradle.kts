@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.kotlinSymbolProcessing)
     alias(libs.plugins.daggerHiltAndroidPlugin)
+    id("kotlin-parcelize")
 }
 
 android {

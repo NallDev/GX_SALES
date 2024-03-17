@@ -44,7 +44,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         )
                         return@observe
                     }
-                    showErrorToast(state.message)
+                    sweetAlertCancelable(
+                        title = "Uppss.. sorry",
+                        content = state.message,
+                        type = Sweetalert.WARNING_TYPE,
+                        confirmText = "Retry",
+                        onConfirm = {
+                            getDashboardProfile()
+                        }
+                    )
                 }
                 is UiState.Loading -> showLoading()
                 is UiState.Success -> {

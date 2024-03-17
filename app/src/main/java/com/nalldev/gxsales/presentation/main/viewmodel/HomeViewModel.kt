@@ -146,7 +146,7 @@ class HomeViewModel @Inject constructor(
         }
 
     @Suppress("UNCHECKED_CAST")
-    private fun getDashboardProfile() = viewModelScope.launch(Dispatchers.IO) {
+    fun getDashboardProfile() = viewModelScope.launch(Dispatchers.IO) {
         val getLeadsDashboard =
             homeRepository.getLeadsDashboard(DateConverter.getToday(), DateConverter.getToday())
         val getProfile = homeRepository.getProfile()

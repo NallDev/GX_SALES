@@ -166,6 +166,57 @@ class LeadOfficeFragment : BaseFragment<FragmentLeadOfficeBinding>() {
         tvSource.setAdapter(sourceArrayAdapter)
         tvStatus.setAdapter(statusArrayAdapter)
         tvProbability.setAdapter(probabilityArrayAdapter)
+        if (viewModel.isUpdate) {
+            initData()
+        }
+    }
+
+    private fun initData() = with(viewModel) {
+        binding.apply {
+            val type = formViewModel.listTypes.value?.find { item ->
+                typeId.value.contains(item.id.toString(), true)
+            }
+            type?.let {
+                tvType.setText(it.name)
+            }
+
+            val channel = formViewModel.listChannel.value?.find { item ->
+                channelId.value.contains(item.id.toString(), true)
+            }
+            channel?.let {
+                tvChannel.setText(it.name)
+            }
+
+            val media = formViewModel.listMedia.value?.find { item ->
+                mediaId.value.contains(item.id.toString(), true)
+            }
+            media?.let {
+                tvMedia.setText(it.name)
+            }
+
+            val source = formViewModel.listSource.value?.find { item ->
+                sourceId.value.contains(item.id.toString(), true)
+            }
+            source?.let {
+                tvSource.setText(it.name)
+            }
+
+            val status = formViewModel.listStatus.value?.find { item ->
+                statusId.value.contains(item.id.toString(), true)
+            }
+            status?.let {
+                tvStatus.setText(it.name)
+            }
+
+            val probability = formViewModel.listProbabilities.value?.find { item ->
+                probabilityId.value.contains(item.id.toString(), true)
+            }
+            probability?.let {
+                tvProbability.setText(it.name)
+            }
+
+            tvNotes.setText(generalNotes.value)
+        }
     }
 
     override fun setupListeners() = with(binding) {
@@ -238,7 +289,11 @@ class LeadOfficeFragment : BaseFragment<FragmentLeadOfficeBinding>() {
         }
 
         btnSubmit.setOnClickListener {
-            viewModel.createLead()
+            if (viewModel.isUpdate) {
+                viewModel.updateLead()
+            } else {
+                viewModel.createLead()
+            }
         }
     }
 

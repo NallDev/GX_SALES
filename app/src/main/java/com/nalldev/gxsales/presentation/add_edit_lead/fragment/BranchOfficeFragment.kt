@@ -35,6 +35,7 @@ import com.nalldev.gxsales.core.viewmodel.FormViewModel
 import com.nalldev.gxsales.databinding.FragmentBranchOfficeBinding
 import com.nalldev.gxsales.presentation.add_edit_lead.viewmodel.AddEditLeadViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -148,12 +149,45 @@ class BranchOfficeFragment : BaseFragment<FragmentBranchOfficeBinding>() {
         }
     }
 
-    override fun setupUI() = with(binding) {
+    override fun setupUI(): Unit = with(binding) {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         initGender()
+        if (viewModel.isUpdate) {
+            initData()
+        }
         tvBranch.setAdapter(branchArrayAdapter)
         tvPhoneCode.setAdapter(countryCodeArrayAdapter)
+    }
+
+    private fun initData() = with(viewModel) {
+        binding.apply {
+            tvName.setText(fullName.value)
+            tvEmail.setText(email.value)
+            tvPhone.setText(phone.value)
+            tvAddress.setText(address.value)
+            tvLatitude.setText(latitude.value)
+            tvLongitude.setText(longitude.value)
+            tvIdentity.setText(idNumber.value)
+
+            if (gender.value.equals("male", true)) {
+                binding.radioMale.setChecked(true)
+                binding.radioFemale.setChecked(false)
+            } else {
+                binding.radioMale.setChecked(false)
+                binding.radioFemale.setChecked(true)
+            }
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(300)
+                val branch = formViewModel.listBranch.value?.find { item ->
+                    branchOfficeId.value.contains(item.id.toString(), true)
+                }
+                branch?.let {
+                    tvBranch.setText(it.name)
+                }
+            }
+        }
     }
 
     private fun initGender() = with(binding) {
@@ -177,7 +211,6 @@ class BranchOfficeFragment : BaseFragment<FragmentBranchOfficeBinding>() {
         }
 
         tvPhone.doOnTextChanged { text, _, _, _ ->
-            Log.e("PHONE", "${tvPhoneCode.text}$text")
             viewModel.setPhone("${tvPhoneCode.text}$text")
         }
 

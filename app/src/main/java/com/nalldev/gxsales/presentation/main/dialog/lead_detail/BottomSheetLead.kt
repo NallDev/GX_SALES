@@ -1,5 +1,6 @@
 package com.nalldev.gxsales.presentation.main.dialog.lead_detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.nalldev.gxsales.R
 import com.nalldev.gxsales.databinding.BottomSheetLeadBinding
+import com.nalldev.gxsales.presentation.add_edit_lead.ui.AddEditActivity
 import com.nalldev.gxsales.presentation.main.domain.model.LeadResponse
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
 
@@ -49,6 +51,13 @@ class BottomSheetLead(private val dataLead : LeadResponse) : BottomSheetDialogFr
         ivDelete.setOnClickListener {
             dismiss()
             homeViewModel.deleteLead(dataLead.id.toString())
+        }
+        ivEdit.setOnClickListener {
+            dismiss()
+            Intent(requireContext(), AddEditActivity::class.java).let {
+                it.putExtra(AddEditActivity.LEAD, dataLead)
+                startActivity(it)
+            }
         }
     }
 

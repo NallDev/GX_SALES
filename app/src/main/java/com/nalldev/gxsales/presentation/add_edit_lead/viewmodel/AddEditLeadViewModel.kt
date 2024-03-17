@@ -1,8 +1,5 @@
 package com.nalldev.gxsales.presentation.add_edit_lead.viewmodel
 
-import android.content.ContentResolver
-import android.content.Context
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,11 +19,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.File
-import java.io.FileOutputStream
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,6 +28,9 @@ class AddEditLeadViewModel @Inject constructor(
 ) : ViewModel() {
     private val _stateCreateLead : MutableLiveData<UiState<LeadResponse>> = MutableLiveData()
     val stateCreateLead : LiveData<UiState<LeadResponse>> = _stateCreateLead
+
+    private val _stateUpdateLead : MutableLiveData<UiState<LeadResponse>> = MutableLiveData()
+    val stateUpdateLead : LiveData<UiState<LeadResponse>> = _stateUpdateLead
 
     private val _branchOfficeId = MutableStateFlow("")
     val branchOfficeId: StateFlow<String> = _branchOfficeId.asStateFlow()
@@ -75,9 +71,6 @@ class AddEditLeadViewModel @Inject constructor(
     private val _longitude = MutableStateFlow("")
     val longitude: StateFlow<String> = _longitude.asStateFlow()
 
-    private val _companyName = MutableStateFlow("")
-    val companyName: StateFlow<String> = _companyName.asStateFlow()
-
     private val _generalNotes = MutableStateFlow("")
     val generalNotes: StateFlow<String> = _generalNotes.asStateFlow()
 
@@ -88,7 +81,9 @@ class AddEditLeadViewModel @Inject constructor(
     val idNumber: StateFlow<String> = _idNumber.asStateFlow()
 
     private val _image : MutableStateFlow<MultipartBody.Part?> = MutableStateFlow(null)
-    val image : StateFlow<MultipartBody.Part?> = _image
+
+    var idLead : String = "-1"
+    var isUpdate : Boolean = false
 
     val isBranchMandatoryFilled = combine(
         _fullName,
@@ -123,7 +118,7 @@ class AddEditLeadViewModel @Inject constructor(
             address = _address.value,
             latitude = _latitude.value,
             longitude = _longitude.value,
-            companyName = _companyName.value,
+            companyName = "Global Xtreme",
             generalNotes = _generalNotes.value,
             gender = _gender.value,
             idNumber = _idNumber.value
@@ -139,6 +134,39 @@ class AddEditLeadViewModel @Inject constructor(
             .firstOrNull()
             ?.let { data ->
                 _stateCreateLead.postValue(UiState.Success(data))
+            }
+    }
+
+    fun updateLead() = viewModelScope.launch(Dispatchers.IO) {
+        val leadModel = LeadModel(
+            branchOfficeId = _branchOfficeId.value,
+            probabilityId = _probabilityId.value,
+            typeId = _typeId.value,
+            channelId = _channelId.value,
+            mediaId = _mediaId.value,
+            sourceId = _sourceId.value,
+            fullName = _fullName.value,
+            email = _email.value,
+            phone = _phone.value,
+            address = _address.value,
+            latitude = _latitude.value,
+            longitude = _longitude.value,
+            companyName = "Global Xtreme",
+            generalNotes = _generalNotes.value,
+            gender = _gender.value,
+            idNumber = _idNumber.value
+        )
+
+        addEditLeadRepository.updateLead(idLead, leadModel ,_image.value)
+            .onStart {
+                _stateUpdateLead.postValue(UiState.Loading)
+            }
+            .catch { cause: Throwable ->
+                _stateUpdateLead.postValue(UiState.Error(ErrorExtractor.errorMessage(cause)))
+            }
+            .firstOrNull()
+            ?.let { data ->
+                _stateUpdateLead.postValue(UiState.Success(data))
             }
     }
 
@@ -192,10 +220,6 @@ class AddEditLeadViewModel @Inject constructor(
 
     fun setLongitude(longitude: String) = viewModelScope.launch(Dispatchers.IO) {
         _longitude.value = longitude
-    }
-
-    fun setCompanyName(companyName: String) = viewModelScope.launch(Dispatchers.IO) {
-        _companyName.value = companyName
     }
 
     fun setGeneralNotes(notes: String) = viewModelScope.launch(Dispatchers.IO) {

@@ -3,8 +3,6 @@ package com.nalldev.gxsales.di
 import android.content.Context
 import android.content.SharedPreferences
 import com.nalldev.gxsales.core.remote.ApiService
-import com.nalldev.gxsales.presentation.login.data.LoginRepositoryImpl
-import com.nalldev.gxsales.presentation.login.domain.repository.LoginRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -24,6 +23,9 @@ object AppModule {
     fun provideOkhttpClient() = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .addNetworkInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .connectTimeout(2, TimeUnit.MINUTES)
+        .readTimeout(2, TimeUnit.MINUTES)
+        .writeTimeout(2, TimeUnit.MINUTES)
         .build()
 
     @Provides
