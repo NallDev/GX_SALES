@@ -43,6 +43,14 @@ class HomeViewModel @Inject constructor(
         MutableLiveData()
     val stateLeadsDashboard: LiveData<UiState<List<StatusesItem>>> = _stateLeadsDashboard
 
+    private val _stateDeleteLead: MutableLiveData<UiState<Unit>> =
+        MutableLiveData()
+    val stateDeleteLead: LiveData<UiState<Unit>> = _stateDeleteLead
+
+    private val _stateListLead: MutableLiveData<UiState<List<LeadResponse>>> =
+        MutableLiveData()
+    val stateListLead: LiveData<UiState<List<LeadResponse>>> = _stateListLead
+
     private val _profile: MutableLiveData<ProfileResponse> = MutableLiveData()
     val profile: LiveData<ProfileResponse> = _profile
 
@@ -193,6 +201,36 @@ class HomeViewModel @Inject constructor(
                 formRepository.setSources(data.sources)
                 formRepository.setStatuses(data.statuses)
                 formRepository.setTypes(data.types)
+                formRepository.setProbabilities(data.probabilities)
+            }
+    }
+
+    fun getListLead() = viewModelScope.launch(Dispatchers.IO) {
+        leadsRepository.getListLead()
+            .onStart {
+                _stateListLead.postValue(UiState.Loading)
+            }
+            .catch { cause: Throwable ->
+                _stateListLead.postValue(UiState.Error(ErrorExtractor.errorMessage(cause)))
+            }
+            .firstOrNull()
+            ?.let { listData ->
+                _stateListLead.postValue(UiState.Success(listData))
+                _listLead.value = listData
+            }
+    }
+
+    fun deleteLead(id : String) = viewModelScope.launch(Dispatchers.IO) {
+        leadsRepository.deleteLead(id)
+            .onStart {
+                _stateDeleteLead.postValue(UiState.Loading)
+            }
+            .catch { cause: Throwable ->
+                _stateDeleteLead.postValue(UiState.Error(ErrorExtractor.errorMessage(cause)))
+            }
+            .firstOrNull()
+            ?.let {
+                _stateDeleteLead.postValue(UiState.Success(Unit))
             }
     }
 

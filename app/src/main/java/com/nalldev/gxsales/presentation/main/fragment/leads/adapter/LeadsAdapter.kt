@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nalldev.gxsales.databinding.ItemLeadBinding
 import com.nalldev.gxsales.presentation.main.domain.model.LeadResponse
 
-class LeadsAdapter : ListAdapter<LeadResponse, LeadsAdapter.ViewHolder>(LeadDiffCallback) {
+class LeadsAdapter(private val leadsAdapterEvent: LeadsAdapterEvent? = null) : ListAdapter<LeadResponse, LeadsAdapter.ViewHolder>(LeadDiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeadsAdapter.ViewHolder {
         val binding = ItemLeadBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -30,7 +30,15 @@ class LeadsAdapter : ListAdapter<LeadResponse, LeadsAdapter.ViewHolder>(LeadDiff
             tvMedia.text = data.media.name
             tvSource.text = data.source.name
             tvStatus.text = data.status.name
+            
+            root.setOnClickListener {
+                leadsAdapterEvent?.onItemClick(data)
+            }
         }
+    }
+
+    interface LeadsAdapterEvent {
+        fun onItemClick(dataLead : LeadResponse)
     }
 
     object LeadDiffCallback : DiffUtil.ItemCallback<LeadResponse>() {

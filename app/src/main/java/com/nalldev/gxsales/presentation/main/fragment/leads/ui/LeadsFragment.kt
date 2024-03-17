@@ -9,8 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.nalldev.gxsales.core.base.BaseFragment
 import com.nalldev.gxsales.core.util.GridSpacingItemDecoration
+import com.nalldev.gxsales.core.util.UiState
 import com.nalldev.gxsales.databinding.FragmentLeadsBinding
 import com.nalldev.gxsales.presentation.main.dialog.filter_leads.ui.BottomSheetFilterLeads
+import com.nalldev.gxsales.presentation.main.dialog.lead_detail.BottomSheetLead
+import com.nalldev.gxsales.presentation.main.domain.model.LeadResponse
 import com.nalldev.gxsales.presentation.main.fragment.leads.adapter.LeadsAdapter
 import com.nalldev.gxsales.presentation.main.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +25,7 @@ class LeadsFragment : BaseFragment<FragmentLeadsBinding>() {
     private val viewModel by activityViewModels<HomeViewModel>()
 
     private val leadsAdapter by lazy {
-        LeadsAdapter()
+        LeadsAdapter(leadsAdapterEvent)
     }
 
     override fun getViewBinding(
@@ -59,6 +62,13 @@ class LeadsFragment : BaseFragment<FragmentLeadsBinding>() {
         btnFilter.setOnClickListener {
             BottomSheetFilterLeads()
                 .show(requireActivity().supportFragmentManager, "filter")
+        }
+    }
+
+    private val leadsAdapterEvent = object : LeadsAdapter.LeadsAdapterEvent {
+        override fun onItemClick(dataLead: LeadResponse) {
+            BottomSheetLead(dataLead)
+                .show(requireActivity().supportFragmentManager, "lead")
         }
     }
 }

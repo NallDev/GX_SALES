@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.viewbinding.ViewBinding
 import com.nalldev.gxsales.R
 import taimoor.sultani.sweetalert2.Sweetalert
@@ -17,9 +18,11 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         _binding = getViewBinding()
         setContentView(binding.root)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         loadingDialog = Sweetalert(this, Sweetalert.PROGRESS_TYPE).also {
             it.setCancelable(false)
         }

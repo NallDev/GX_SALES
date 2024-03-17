@@ -52,6 +52,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
         }
+
+        stateListLead.observe(this@MainActivity) { state ->
+            when(state) {
+                is UiState.Error -> dismissLoading()
+                is UiState.Loading -> showLoading("Fetching list lead")
+                is UiState.Success -> {
+                    dismissLoading()
+                }
+            }
+        }
+
+        stateDeleteLead.observe(this@MainActivity) { state ->
+            when(state) {
+                is UiState.Error -> {
+                    dismissLoading()
+                    showErrorToast(state.message)
+                }
+                is UiState.Loading -> showLoading()
+                is UiState.Success -> {
+                    dismissLoading()
+                    getListLead()
+                }
+            }
+        }
     }
 
     override fun setupUI() = with(binding) {

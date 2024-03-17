@@ -81,7 +81,10 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.android.sweetalert2)
     implementation(libs.motiontoast)
+    implementation(libs.imagepopup)
     implementation(libs.flexbox)
+    implementation(libs.play.services.location)
+    implementation(libs.glide)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

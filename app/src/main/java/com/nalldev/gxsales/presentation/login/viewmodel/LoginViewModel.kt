@@ -76,7 +76,6 @@ class LoginViewModel @Inject constructor(
             }
             .firstOrNull()
             ?.let {
-                Log.e("REGISTERED TOKEN", "bearer ${it.token}")
                 sessionRepository.setToken("bearer ${it.token}")
                 _stateLogin.postValue(UiState.Success(Unit))
             }

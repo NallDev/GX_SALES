@@ -222,7 +222,7 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_filter"
+                android:id="@+id/btn_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_bold"
@@ -373,6 +373,7 @@
                 android:textColor="@color/text_grey"/>
 
             <RadioGroup
+                android:id="@+id/rg_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -382,6 +383,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/male"
+                    android:textColor="@color/black"
                     android:button="@null"
                     android:checked="true"
                     android:drawablePadding="@dimen/_4sdp"
@@ -392,6 +394,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/female"
+                    android:textColor="@color/black"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:button="@null"
                     android:drawablePadding="@dimen/_4sdp"
@@ -445,7 +448,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_64sdp"
+                android:layout_height="@dimen/_104sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 app:cardBackgroundColor="@color/white">
 
@@ -470,6 +473,91 @@
                         android:textSize="@dimen/_12ssp"/>
 
                 </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/container_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_file_image"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:src="@drawable/ic_gallery"
+                        android:scaleType="centerCrop"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tv_file_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/inter_regular"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:ellipsize="start"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        app:layout_constraintStart_toEndOf="@id/iv_file_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/iv_file_image"/>
+
+                    <TextView
+                        android:id="@+id/tv_file_size"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_10ssp"
+                        android:fontFamily="@font/inter_regular"
+                        android:textColor="@color/text_grey"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:maxLines="1"
+                        android:ellipsize="start"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        app:layout_constraintStart_toEndOf="@id/iv_file_image"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_file_name"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@color/text_input_grey"
+                        app:layout_constraintTop_toBottomOf="@id/iv_file_image"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_delete_file"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_delete"
+                            android:scaleType="center"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/iv_show_file"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_eye"
+                            android:scaleType="center"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/iv_edit_file"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_edit"
+                            android:scaleType="center"
+                            android:layout_weight="1"/>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.card.MaterialCardView>
@@ -496,7 +584,8 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:textSize="@dimen/_10ssp"
-                    app:backgroundTint="@color/yellow_btn"
+                    android:enabled="false"
+                    app:backgroundTint="@color/outline_stroke"
                     app:cornerRadius="@dimen/_8sdp"
                     app:iconTint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"

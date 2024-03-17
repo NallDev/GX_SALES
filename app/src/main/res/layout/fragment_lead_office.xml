@@ -262,7 +262,7 @@
                 android:textColor="@color/text_grey"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_address"
+                android:id="@+id/til_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_4sdp"
@@ -275,7 +275,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tv_address"
+                    android:id="@+id/tv_notes"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:textColor="@color/black"
@@ -309,7 +309,8 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:textSize="@dimen/_10ssp"
-                    app:backgroundTint="@color/yellow_btn"
+                    android:enabled="false"
+                    app:backgroundTint="@color/outline_stroke"
                     app:cornerRadius="@dimen/_8sdp"
                     app:iconTint="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"

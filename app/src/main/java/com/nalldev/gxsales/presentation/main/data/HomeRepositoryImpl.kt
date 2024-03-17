@@ -9,51 +9,58 @@ import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    sessionRepository: SessionRepository
+    private val sessionRepository: SessionRepository
 ) : HomeRepository {
-    private val token = sessionRepository.getToken()
     override suspend fun getLeadsDashboard(fromDate: String, toDate: String) = flow {
-        Log.e("TOKEN", token)
+        val token = sessionRepository.getToken()
         val request = apiService.getLeadsDashboard(token, fromDate, toDate)
         emit(request.data.statuses)
     }
 
     override suspend fun getProfile() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getProfile(token)
         emit(request.data)
     }
 
     override suspend fun getBranchOffices() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getBranchOffices(token)
         emit(request.data)
     }
 
     override suspend fun getTypes() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getTypes(token)
         emit(request.data)
     }
 
     override suspend fun getStatuses() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getStatuses(token)
         emit(request.data)
     }
 
     override suspend fun getChannels() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getChannels(token)
         emit(request.data)
     }
 
     override suspend fun getMedias() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getMedias(token)
         emit(request.data)
     }
 
     override suspend fun getSources() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getSources(token)
         emit(request.data)
     }
 
     override suspend fun getProbabilities() = flow {
+        val token = sessionRepository.getToken()
         val request = apiService.getProbabilities(token)
         emit(request.data)
     }

@@ -12,11 +12,10 @@ import javax.inject.Inject
 
 class AddEditLeadRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    sessionRepository: SessionRepository
+    private val sessionRepository: SessionRepository
 ) : AddEditLeadRepository {
-    val token = sessionRepository.getToken()
-
     override suspend fun createLead(leadModel: LeadModel, image : MultipartBody.Part?) = flow {
+        val token = sessionRepository.getToken()
         val branchOfficeIdBody = leadModel.branchOfficeId.toRequestBody("text/plain".toMediaTypeOrNull())
         val probabilityId = leadModel.probabilityId.toRequestBody("text/plain".toMediaTypeOrNull())
         val typeId = leadModel.typeId.toRequestBody("text/plain".toMediaTypeOrNull())

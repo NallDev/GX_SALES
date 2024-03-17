@@ -35,7 +35,7 @@
     <string name="_62">+62</string>
     <string name="_879993xxxx">879993xxxx</string>
     <string name="e_g_jl_kerobokan_388x">e.g Jl Kerobokan 388x</string>
-    <string name="latitude_mandatory">Latitude *</string>
+    <string name="latitude_mandatory">Latitude <font fgcolor='#FF0000'>*</font></string>
     <string name="e_g_8_44444">e.g -8.44444</string>
     <string name="e_g_115_00003">e.g 115.00003</string>
     <string name="address">Address</string>
@@ -49,17 +49,17 @@
     <string name="add_a_photo">Add a photo</string>
     <string name="next">Next</string>
     <string name="lead_information">Lead Information</string>
-    <string name="lead_type_mandatory">Lead Type*</string>
+    <string name="lead_type_mandatory">Lead Type<font fgcolor='#FF0000'>*</font></string>
     <string name="select_lead_type">- Select Lead Type -</string>
-    <string name="lead_channel_mandatory">Lead Channel*</string>
+    <string name="lead_channel_mandatory">Lead Channel<font fgcolor='#FF0000'>*</font></string>
     <string name="select_lead_channel">- Select Lead Channel -</string>
-    <string name="lead_media">Lead Media*</string>
+    <string name="lead_media">Lead Media<font fgcolor='#FF0000'>*</font></string>
     <string name="select_lead_media">- Select Lead Media -</string>
     <string name="lead_source">Lead Source</string>
     <string name="select_lead_source">- Select Lead Source -</string>
-    <string name="lead_status_mandatory">Lead Status*</string>
+    <string name="lead_status_mandatory">Lead Status<font fgcolor='#FF0000'>*</font></string>
     <string name="select_lead_status">- Select Lead Status -</string>
-    <string name="lead_probability_mandatory">Lead Probability*</string>
+    <string name="lead_probability_mandatory">Lead Probability<font fgcolor='#FF0000'>*</font></string>
     <string name="select_lead_probability">- Select Lead Probability -</string>
     <string name="notes">Notes</string>
     <string name="submit">Submit</string>

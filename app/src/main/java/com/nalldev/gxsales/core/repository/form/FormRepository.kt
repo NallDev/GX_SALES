@@ -10,6 +10,7 @@ interface FormRepository {
     fun getMedias() : List<BaseItemModel>
     fun getSources() : List<BaseItemModel>
     fun getProbabilities() : List<BaseItemModel>
+    fun getCountryCode() : List<String>
     fun setBranchOffices(items : List<BaseItemModel>)
     fun setTypes(items : List<BaseItemModel>)
     fun setStatuses(items : List<BaseItemModel>)

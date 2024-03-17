@@ -32,6 +32,9 @@ class FormViewModel @Inject constructor(
     private val _listProbabilities : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
     val listProbabilities : LiveData<List<BaseItemModel>> = _listProbabilities
 
+    private val _listCountryCode : MutableLiveData<List<String>> = MutableLiveData()
+    val listCountryCode : LiveData<List<String>> = _listCountryCode
+
     private val _listTypes : MutableLiveData<List<BaseItemModel>> = MutableLiveData()
     val listTypes : LiveData<List<BaseItemModel>> = _listTypes
 
@@ -43,5 +46,6 @@ class FormViewModel @Inject constructor(
         _listBranch.postValue(formRepository.getBranchOffices())
         _listProbabilities.postValue(formRepository.getProbabilities())
         _listTypes.postValue(formRepository.getTypes())
+        _listCountryCode.postValue(formRepository.getCountryCode())
     }
 }

@@ -58,6 +58,10 @@ class FormRepositoryImpl @Inject constructor(
         return Gson().fromJson(json, type) ?: emptyList()
     }
 
+    override fun getCountryCode(): List<String> {
+        return listOf("+62", "+1", "+44")
+    }
+
     override fun setBranchOffices(items: List<BaseItemModel>) {
         val dataToJson = Gson().toJson(items)
         sharedPreferences.edit().putString(BRANCH_KEY, dataToJson).apply()

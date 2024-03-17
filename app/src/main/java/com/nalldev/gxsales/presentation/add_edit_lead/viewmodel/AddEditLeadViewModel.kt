@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -37,6 +38,9 @@ class AddEditLeadViewModel @Inject constructor(
 
     private val _branchOfficeId = MutableStateFlow("")
     val branchOfficeId: StateFlow<String> = _branchOfficeId.asStateFlow()
+
+    private val _statusId = MutableStateFlow("")
+    val statusId: StateFlow<String> = _statusId.asStateFlow()
 
     private val _probabilityId = MutableStateFlow("")
     val probabilityId: StateFlow<String> = _probabilityId.asStateFlow()
@@ -86,6 +90,25 @@ class AddEditLeadViewModel @Inject constructor(
     private val _image : MutableStateFlow<MultipartBody.Part?> = MutableStateFlow(null)
     val image : StateFlow<MultipartBody.Part?> = _image
 
+    val isBranchMandatoryFilled = combine(
+        _fullName,
+        _phone,
+        _latitude,
+        _longitude
+    ) { fullName, phone, latitude, longitude ->
+        fullName.isNotBlank() && phone.isNotBlank() && latitude.isNotBlank() && longitude.isNotBlank()
+    }
+
+    val isLeadMandatoryFilled = combine(
+        _typeId,
+        _channelId,
+        _mediaId,
+        _statusId,
+        _probabilityId
+    ) { typeId, channelId, mediaId, statusId, probabilityId ->
+        typeId.isNotBlank() && channelId.isNotBlank() && mediaId.isNotBlank() && statusId.isNotBlank() && probabilityId.isNotBlank()
+    }
+
     fun createLead() = viewModelScope.launch(Dispatchers.IO) {
         val leadModel = LeadModel(
             branchOfficeId = _branchOfficeId.value,
@@ -121,6 +144,10 @@ class AddEditLeadViewModel @Inject constructor(
 
     fun setBranchOfficeId(id: String) = viewModelScope.launch(Dispatchers.IO) {
         _branchOfficeId.value = id
+    }
+
+    fun setStatusId(id: String) = viewModelScope.launch(Dispatchers.IO) {
+        _statusId.value = id
     }
 
     fun setProbabilityId(id: String) = viewModelScope.launch(Dispatchers.IO) {
@@ -183,7 +210,7 @@ class AddEditLeadViewModel @Inject constructor(
         _idNumber.value = idNumber
     }
 
-    fun setImage(image: MultipartBody.Part) = viewModelScope.launch(Dispatchers.IO) {
+    fun setImage(image: MultipartBody.Part?) = viewModelScope.launch(Dispatchers.IO) {
         _image.value = image
     }
 }

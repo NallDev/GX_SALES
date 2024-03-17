@@ -3,7 +3,9 @@ activityKtx = "1.8.2"
 agp = "8.3.0"
 androidSweetalert2 = "2.0.2"
 flexbox = "3.0.0"
+glide = "4.16.0"
 hiltAndroid = "2.48.1"
+imagepopup = "1.1.0"
 kotlin = "1.9.20"
 coreKtx = "1.12.0"
 junit = "4.13.2"
@@ -18,6 +20,7 @@ constraintlayout = "2.1.4"
 motiontoast = "1.4"
 navigationFragmentKtx = "2.7.7"
 pagingRuntimeKtx = "3.2.1"
+playServicesLocation = "21.2.0"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
 ksp = "1.9.20-1.0.14"
@@ -38,8 +41,10 @@ androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "ro
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+imagepopup = { module = "com.github.marcandreappel:imagepopup", version.ref = "imagepopup" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -49,6 +54,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 motiontoast = { module = "com.github.Spikeysanju:MotionToast", version.ref = "motiontoast" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
